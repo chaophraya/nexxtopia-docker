@@ -12,8 +12,13 @@ WORKDIR /opt/sinopia
 # Install sinopia and necessary tools
 RUN npm install nexxtopia --production
 
+# Set default registry
+RUN npm set registry http://localhost:4873/
+
+# Add default config
 ADD config.yaml /opt/nexxtopia/config.yaml
 
+# Start the application
 CMD ["/opt/nexxtopia/node_modules/nexxtopia/bin/nexxtopia"]
 
 EXPOSE 4873
